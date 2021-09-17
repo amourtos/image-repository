@@ -12,10 +12,10 @@ Python version 3.9 is required.
 
 1.) clone the repository
 2.) on the command line enter the following:
-    poetry install
-    poetry shell
-    python manage.py makemigrations
-    python manage.py migrate
-    python manage.py runserver
+    \n poetry install
+    \n poetry shell
+    \n python manage.py makemigrations
+    \n python manage.py migrate
+    \n python manage.py runserver
 5.) the development server will run on your local machine, and you can access the web app from the local server.
 6.) Play around and enjoy!
