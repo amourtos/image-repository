@@ -1,0 +1,22 @@
+{% include "navbar.html" %}
+<div class="card" style="width: 30rem">
+  <div class="card-header">
+    <h5 class="card-title">{{image.title}}</h5>
+  </div>
+  <div class="card-header">
+   <a class="card-subtitle mb-2 text-muted" href="/user/{{image.uploaded_by.id}}/">{{image.uploaded_by}}</a>
+    <img src="/{{image.image}}" class="card-img-top" alt="{{image}}" />
+  </div>
+  <div class="card-body">
+    <p class="card-text">{{image.description}}</p>
+    <div class="card-footer">
+      <p class="card-subtitle mb-2 text-muted">{{image.hashtags}}</p>
+      <p class="card-subtitle mb-2 text-muted">{{image.time}}</p>
+      {% if request.user in image.like.all %}
+      <a href="/image/unlike/{{image.id}}/" class="btn btn-primary">Unlike</a>
+      {% else %}
+      <a href="/image/like/{{image.id}}/" class="btn btn-primary">Like &#128077</a>
+      {% endif %}
+    </div>
+  </div>
+</div>

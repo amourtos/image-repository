@@ -1,0 +1,31 @@
+{% include "navbar.html" %}
+<div style="display: flex; flex-direction: row; flex-wrap: wrap">
+  {% for image in images %}
+  <div class="card" style="width: 18rem">
+    <div class="card-header">
+      <img src="/{{image.image}}" class="card-img-top" alt="{{image}}" />
+    </div>
+    <div class="card-body">
+      <h5 class="card-title">{{image.title}}</h5>
+      <a class="card-subtitle mb-2 text-muted" href="/user/{{image.uploaded_by.id}}/">{{image.uploaded_by}}</a>
+      {% if image.like.count == 0 %}
+      <p></p>
+      {% else %}
+      <p class="card-subtitle mb-2 text-muted">Likes: {{image.like.count}}</p>
+      {% endif %}
+      &nbsp;&nbsp
+      <p></p>
+      <p class="card-text">{{image.description}}</p>
+    </div>
+    <div class="card-footer">
+      <p class="card-subtitle mb-2 text-muted">{{image.time}}</p>
+      <a href="/image/{{image.id}}/" class="btn btn-primary">Go to Image</a>
+      {% if request.user in image.like.all %}
+      <a href="image/unlike/{{image.id}}/" class="btn btn-primary">Unlike</a>
+      {% else %}
+      <a href="/image/like/{{image.id}}/" class="btn btn-primary">Like &#128077</a>
+      {% endif %}
+    </div>
+  </div>
+  {% endfor %}
+</div>

@@ -1,0 +1,44 @@
+{% include "navbar.html" %}
+<center>
+  <header>
+    <div style="width: 35rem; border: 3px solid #172032">
+      <div class="card-header">
+        <h3 class="card-title">{{user.username}}</h3>
+      </div>
+      <div class="card-body">
+        <h5 class="card-title">Number of posts: {{user.uploaded_by.count}}</h5>
+        <h4 class="card-title">{{user.bio}}</h4>
+        <h5 class="card-title">Number of followers: WIP</h5>
+        <h5 class="card-title">Number of likes: WIP</h5>
+      </div>
+     <div class="card-footer">
+     {% if request.user in user.followers.all %}
+        <a href="/user/unfollow/{{user.id}}/" class="btn btn-primary">Unfollow</a>
+        {% else %}
+        <a href="/user/follow/{{user.id}}/" class="btn btn-primary">Follow</a>
+        {% endif %}
+    </div>
+  </header>
+  <p></p>
+  &nbsp;&nbsp;
+</center>
+<div style="display: flex; flex-direction: row; flex-wrap: wrap">
+  {% for image in images %}
+  <div class="card" style="width: 18rem">
+    <div class="card-header">
+      <img src="/{{image.image}}" class="card-img-top" alt="{{image}}" />
+    </div>
+    <div class="card-body">
+      <h5 class="card-title">{{image.title}}</h5>
+      <a class="card-subtitle mb-2 text-muted" href="/user/{{image.uploaded_by.id}}/">{{image.uploaded_by}}</a>
+      &nbsp;&nbsp
+      <p></p>
+      <p class="card-text">{{image.description}}</p>
+    </div>
+    <div class="card-footer">
+      <p class="card-subtitle mb-2 text-muted">{{image.time}}</p>
+      <a href="/image/{{image.id}}/" class="btn btn-primary">Go to Image</a>
+    </div>
+  </div>
+  {% endfor %}
+</div>

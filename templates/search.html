@@ -1,0 +1,36 @@
+{% load static %} {% include 'navbar.html' %}
+
+<center>
+  <div style="display: flex; flex-direction: row; flex-wrap: wrap">
+    {% if searched %}
+    <div style="display: flex; flex-direction: row; flex-wrap: wrap">
+      {% for result in images %}
+      <div class="card" style="width: 18rem">
+        <div class="card-header">
+          <h5 class="card-title">{{result.title}}</h5>
+          <p class="card-title">{{result.uploaded_by}}</p>
+        </div>
+        <img src="/{{result.image}}" class="card-img-top" />
+        <div class="card-footer">
+          <a href="/image/{{result.id}}/" class="btn btn-primary">Go to image</a>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+    {% else %}
+    <div style="display: flex; flex-direction: row; flex-wrap: wrap">
+      {% for image in images %}
+      <div class="card" style="width: 18rem">
+        <div class="card-header">
+          <h5 class="card-title">{{image.title}}</h5>
+          <a class="card-title" href="/user/{{image.uploaded_by.id}}/">{{image.uploaded_by}}</a>
+        </div>
+        <img src="/{{image.image}}" class="card-img-top" />
+        <div class="card-footer">
+          <a href="/image/{{image.id}}/" class="btn btn-primary">Go to image</a>
+        </div>
+      </div>
+      {% endfor %} {% endif %}
+    </div>
+  </div>
+</center>
