@@ -84,3 +84,8 @@ def unlike_view(request, image_id):
     image.like.remove(request.user)
     image.save()
     return redirect(request.META.get('HTTP_REFERER'))
+
+
+def delete_view(request, image_id):
+    Image.objects.get(id=image_id).delete()
+    return redirect('home')

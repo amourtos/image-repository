@@ -33,6 +33,7 @@ urlpatterns = [
     path('image/<int:image_id>/', image_views.image_view, name="image"),
     path('image/like/<int:image_id>/', image_views.like_view, name="like"),
     path('image/unlike/<int:image_id>/', image_views.unlike_view, name="unlike"),
+    path('image/delete/<int:image_id>/', image_views.delete_view, name="delete"),
     path('user/<int:user_id>/', user_views.user_view, name="user"),
     path('user/follow/<int:user_id>/', user_views.follow_view, name="follow"),
     path('user/unfollow/<int:user_id>/',
